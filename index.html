@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <body>
-        <h2>API Test Verileri</h2>
-        <button onclick="getTcs()">TC Numaraları Al</button>
-        <button onclick="getImeis()">IMEI Numaraları Al</button>
-        <div id="apiData"></div>
-    </body>
-    <script src="main.js"></script>
+<head>
+    <title>Test Data Generator</title>
+</head>
+<body>
+
+<h2>Enter count for IMEI or TC:</h2>
+
+<form id="myForm">
+  <input type="number" id="count" name="count">
+  <input type="button" value="Get IMEI" onclick="getImei()">
+  <input type="button" value="Get TC" onclick="getTc()">
+</form>
+
+<h2>Response:</h2>
+<div id="response"></div>
+
+<script>
+    function getImei() {
+        var count = document.getElementById("count").value;
+        fetch('http://localhost:8065/imei?count=' + count)
+            .then(response => response.json())
+            .then(data => document.getElementById('response').innerText = JSON.stringify(data));
+    }
+    
+    function getTc() {
+        var count = document.getElementById("count").value;
+        fetch('http://localhost:8065/tc?count=' + count)
+            .then(response => response.json())
+            .then(data => document.getElementById('response').innerText = JSON.stringify(data));
+    }
+</script>
+
+</body>
 </html>
