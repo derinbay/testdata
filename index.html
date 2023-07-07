@@ -19,14 +19,14 @@
 <script>
     function getImei() {
         var count = document.getElementById("count").value;
-        fetch('http://localhost:8065/imei?count=' + count)
+        fetch('http://ec2-18-216-72-161.us-east-2.compute.amazonaws.com:8065/imei?count=' + count)
             .then(response => response.json())
             .then(data => document.getElementById('response').innerText = JSON.stringify(data));
     }
     
     function getTc() {
         var count = document.getElementById("count").value;
-        fetch('http://localhost:8065/tc?count=' + count)
+        fetch('http://ec2-18-216-72-161.us-east-2.compute.amazonaws.com:8065/tc?count=' + count)
             .then(response => response.json())
             .then(data => document.getElementById('response').innerText = JSON.stringify(data));
     }
